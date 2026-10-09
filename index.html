@@ -1,728 +1,923 @@
+
 <!DOCTYPE html>
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>KRUZO VISION — Creative Studio & Visual Portfolio</title>
-  <meta name="description" content="KRUZO VISION — Video ishlab chiqarish, mobilografiya, brend dizayni va vizual reklama loyihalari bo‘yicha professional portfolio.">
-  <meta name="author" content="KRUZO VISION">
-
-  <!-- Favicon (SVG formatda, tashqi faylsiz) -->
-  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90' font-family='sans-serif' font-weight='900' fill='%23F5F5F5'>K</text></svg>">
+  <meta name="theme-color" content="#0a0a0a">
+  <meta name="description" content="KRUZO VISION — videografiya, mobilografiya, kreativ dizayn va vizual marketing portfolio.">
+  <title>KRUZO VISION — Creative Studio</title>
 
   <style>
-    /* --- CSS RESET & ASOSIY O'ZGARUVCHILAR --- */
-    *, *::before, *::after {
+    :root {
+      --bg: #0a0a0a;
+      --card: #121212;
+      --white: #f5f5f5;
+      --gray: #999;
+      --line: #292929;
+      --gold: #c9a96e;
+      --max: 1180px;
+    }
+
+    * {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    :root {
-      --bg-primary: #0A0A0A;
-      --bg-secondary: #121212;
-      --bg-card: #141414;
-      --text-primary: #F5F5F5;
-      --text-secondary: #8E8E93;
-      --border-color: #262626;
-      --border-light: #383838;
-      --font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
-      --container-max: 1240px;
-      --transition-smooth: 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-
     html {
       scroll-behavior: smooth;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
-      font-family: var(--font-family);
-      line-height: 1.6;
+      scroll-padding-top: 85px;
     }
 
     body {
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
+      background: var(--bg);
+      color: var(--white);
+      font-family: Arial, Helvetica, sans-serif;
+      line-height: 1.7;
       overflow-x: hidden;
-      background-color: var(--bg-primary);
-      color: var(--text-primary);
     }
 
-    /* Skip link accessibility uchun */
-    .skip-link {
-      position: absolute;
-      top: -40px;
-      left: 20px;
-      background: var(--text-primary);
-      color: var(--bg-primary);
-      padding: 8px 16px;
-      font-weight: 600;
-      z-index: 1000;
-      text-decoration: none;
-      transition: top 0.2s ease;
-    }
-    .skip-link:focus {
-      top: 20px;
-    }
-
-    /* Container */
-    .container {
-      width: 100%;
-      max-width: var(--container-max);
-      margin: 0 auto;
-      padding: 0 24px;
-    }
-
-    /* --- TIPOGRAFIKA & UNIVERSAL ELEMENTLAR --- */
     a {
       color: inherit;
       text-decoration: none;
-      transition: color var(--transition-smooth), opacity var(--transition-smooth);
     }
 
-    a:focus-visible, button:focus-visible {
-      outline: 2px solid var(--text-primary);
-      outline-offset: 4px;
+    button, a {
+      -webkit-tap-highlight-color: transparent;
     }
 
-    .section-header {
-      margin-bottom: 56px;
-      padding-bottom: 24px;
-      border-bottom: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      gap: 12px;
+    .container {
+      width: min(100% - 40px, var(--max));
+      margin-inline: auto;
     }
 
-    .section-tag {
-      font-size: 0.82rem;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: var(--text-secondary);
-      font-weight: 600;
-    }
-
-    .section-title {
-      font-size: clamp(2rem, 4vw, 3rem);
-      font-weight: 700;
-      letter-spacing: -0.03em;
-      line-height: 1.15;
-    }
-
-    /* --- NAVIGATSIYA --- */
+    /* NAVBAR */
     .navbar {
       position: sticky;
       top: 0;
-      background: rgba(10, 10, 10, 0.85);
-      backdrop-filter: blur(12px);
-      -webkit-backdrop-filter: blur(12px);
-      border-bottom: 1px solid var(--border-color);
-      z-index: 99;
-      width: 100%;
-      height: 76px;
-      display: flex;
-      align-items: center;
+      z-index: 100;
+      background: rgba(10, 10, 10, .94);
+      border-bottom: 1px solid var(--line);
+      backdrop-filter: blur(14px);
     }
 
-    .nav-container {
+    .nav-inner {
+      min-height: 76px;
       display: flex;
-      justify-content: space-between;
       align-items: center;
+      justify-content: space-between;
+      gap: 24px;
     }
 
     .logo {
-      font-size: 1.25rem;
-      font-weight: 800;
-      letter-spacing: 0.12em;
-      text-transform: uppercase;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
+      font-size: 20px;
+      font-weight: 900;
+      letter-spacing: 3px;
+      white-space: nowrap;
     }
 
-    .logo-dot {
-      display: inline-block;
-      width: 7px;
-      height: 7px;
-      background-color: var(--text-primary);
-      border-radius: 50%;
+    .logo span {
+      color: var(--gold);
     }
 
     .nav-links {
       display: flex;
-      list-style: none;
-      gap: 32px;
       align-items: center;
+      gap: 28px;
+      list-style: none;
     }
 
-    .nav-link {
-      font-size: 0.9rem;
-      color: var(--text-secondary);
-      letter-spacing: 0.04em;
+    .nav-links a {
+      font-size: 11px;
+      letter-spacing: 1.2px;
       text-transform: uppercase;
-      font-weight: 500;
+      color: var(--gray);
+      transition: color .25s;
     }
 
-    .nav-link:hover {
-      color: var(--text-primary);
+    .nav-links a:hover {
+      color: var(--gold);
     }
 
-    .nav-btn {
-      padding: 10px 20px;
-      border: 1px solid var(--border-light);
-      font-size: 0.85rem;
-      letter-spacing: 0.06em;
-      text-transform: uppercase;
-      color: var(--text-primary);
-      background: transparent;
-      cursor: pointer;
-      transition: background-color var(--transition-smooth), border-color var(--transition-smooth);
+    .nav-links .contact-nav {
+      border: 1px solid #444;
+      padding: 9px 16px;
+      color: var(--white);
     }
 
-    .nav-btn:hover {
-      background-color: var(--text-primary);
-      color: var(--bg-primary);
-      border-color: var(--text-primary);
-    }
-
-    /* --- HERO BO'LIMI --- */
+    /* HERO */
     .hero {
-      padding: 140px 0 100px;
-      min-height: 80vh;
+      min-height: 650px;
+      min-height: 82svh;
       display: flex;
       align-items: center;
-      border-bottom: 1px solid var(--border-color);
+      padding: 100px 0;
+      border-bottom: 1px solid var(--line);
+      position: relative;
+      isolation: isolate;
     }
 
-    .hero-content {
-      max-width: 1000px;
+    .hero::before {
+      content: "";
+      position: absolute;
+      width: 420px;
+      height: 420px;
+      border-radius: 50%;
+      background: radial-gradient(circle, rgba(201,169,110,.09), transparent 70%);
+      right: -150px;
+      top: 10%;
+      z-index: -1;
+      pointer-events: none;
     }
 
-    .hero-subtitle {
-      font-size: 0.95rem;
-      letter-spacing: 0.2em;
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 12px;
+      color: var(--gold);
+      font-size: 11px;
+      letter-spacing: 3px;
       text-transform: uppercase;
-      color: var(--text-secondary);
       margin-bottom: 24px;
-      display: block;
-      font-weight: 600;
     }
 
-    .hero-title {
-      font-size: clamp(2.8rem, 8vw, 6.2rem);
+    .eyebrow::before {
+      content: "";
+      width: 30px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .hero h1 {
+      font-size: clamp(42px, 8vw, 96px);
       font-weight: 900;
       line-height: 1.02;
-      letter-spacing: -0.04em;
-      text-transform: uppercase;
-      margin-bottom: 36px;
+      letter-spacing: -4px;
+      margin-bottom: 28px;
     }
 
-    .hero-title span {
+    .hero h1 span {
       display: block;
-      color: var(--text-secondary);
+      color: var(--gold);
     }
 
-    .hero-title span.active {
-      color: var(--text-primary);
+    .hero-text {
+      color: var(--gray);
+      max-width: 650px;
+      font-size: clamp(15px, 2vw, 18px);
+      margin-bottom: 34px;
     }
 
-    .hero-description {
-      font-size: clamp(1.05rem, 1.8vw, 1.35rem);
-      color: var(--text-secondary);
-      max-width: 680px;
-      line-height: 1.6;
-      margin-bottom: 44px;
-    }
-
-    .hero-actions {
+    .actions {
       display: flex;
-      gap: 20px;
-      align-items: center;
       flex-wrap: wrap;
+      gap: 14px;
     }
 
     .btn {
       display: inline-flex;
-      align-items: center;
       justify-content: center;
-      padding: 16px 36px;
-      font-size: 0.9rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
+      align-items: center;
+      min-height: 50px;
+      padding: 13px 24px;
+      border: 1px solid var(--gold);
+      font-size: 11px;
+      font-weight: bold;
+      letter-spacing: 1.5px;
       text-transform: uppercase;
-      border: 1px solid var(--text-primary);
-      cursor: pointer;
-      transition: all var(--transition-smooth);
+      transition: .25s;
     }
 
-    .btn-solid {
-      background-color: var(--text-primary);
-      color: var(--bg-primary);
+    .btn-primary {
+      background: var(--gold);
+      color: #0a0a0a;
     }
 
-    .btn-solid:hover {
-      background-color: transparent;
-      color: var(--text-primary);
+    .btn-primary:hover {
+      background: transparent;
+      color: var(--gold);
     }
 
     .btn-outline {
-      background-color: transparent;
-      color: var(--text-primary);
-      border-color: var(--border-light);
+      color: var(--white);
+      border-color: #444;
     }
 
     .btn-outline:hover {
-      border-color: var(--text-primary);
-      background-color: #171717;
+      border-color: var(--gold);
+      color: var(--gold);
     }
 
-    /* --- PORTFOLIO GALEREYASI --- */
-    .portfolio {
-      padding: 120px 0;
-      border-bottom: 1px solid var(--border-color);
+    .hero-note {
+      margin-top: 60px;
+      color: #666;
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
     }
 
+    /* UMUMIY SECTION */
+    .section {
+      padding: 105px 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    .section-head {
+      margin-bottom: 42px;
+    }
+
+    .section-label {
+      color: var(--gold);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 3px;
+      margin-bottom: 12px;
+      display: block;
+    }
+
+    .section-title {
+      font-size: clamp(30px, 5vw, 54px);
+      line-height: 1.15;
+      letter-spacing: -1.5px;
+    }
+
+    .section-description {
+      color: var(--gray);
+      max-width: 650px;
+      margin-top: 16px;
+    }
+
+    /* PORTFOLIO */
     .portfolio-grid {
       display: grid;
-      grid-template-columns: repeat(2, 1fr);
-      gap: 40px;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
     }
 
-    .project-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      transition: transform var(--transition-smooth), border-color var(--transition-smooth);
-    }
-
-    .project-card:hover {
-      border-color: var(--border-light);
-      transform: translateY(-4px);
-    }
-
-    .project-media {
-      width: 100%;
-      aspect-ratio: 16 / 10;
-      background-color: #1a1a1a;
+    .project {
+      background: var(--card);
+      border: 1px solid var(--line);
       overflow: hidden;
+      transition: transform .3s, border-color .3s;
+    }
+
+    .project:hover {
+      transform: translateY(-5px);
+      border-color: #5a4b34;
+    }
+
+    .project-art {
+      aspect-ratio: 16 / 10;
       position: relative;
-      border-bottom: 1px solid var(--border-color);
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+      background:
+        radial-gradient(ellipse at 50% 40%, #28231c, transparent 60%),
+        linear-gradient(135deg, #191919, #080808);
+      border-bottom: 1px solid var(--line);
     }
 
-    .project-media svg {
-      width: 100%;
-      height: 100%;
+    .project-art::before {
+      content: "";
+      position: absolute;
+      width: 170px;
+      height: 170px;
+      border: 1px solid rgba(201,169,110,.4);
+      transform: rotate(45deg);
+    }
+
+    .project-art::after {
+      content: "";
+      position: absolute;
+      width: 115px;
+      height: 115px;
+      border: 1px solid rgba(201,169,110,.22);
+      transform: rotate(45deg);
+    }
+
+    .art-text {
+      position: relative;
+      z-index: 1;
+      font-size: clamp(17px, 3vw, 30px);
+      font-weight: 900;
+      letter-spacing: 4px;
+      text-align: center;
+      color: #eee;
+    }
+
+    .art-text small {
       display: block;
-      transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+      font-size: 9px;
+      letter-spacing: 4px;
+      color: var(--gold);
+      margin-top: 12px;
     }
 
-    .project-card:hover .project-media svg {
-      transform: scale(1.03);
-    }
-
-    .project-body {
-      padding: 32px 28px;
-      display: flex;
-      flex-direction: column;
-      flex-grow: 1;
+    .project-content {
+      padding: 26px;
     }
 
     .project-category {
-      font-size: 0.8rem;
-      letter-spacing: 0.14em;
+      color: var(--gold);
+      font-size: 10px;
+      letter-spacing: 2px;
       text-transform: uppercase;
-      color: var(--text-secondary);
-      margin-bottom: 12px;
-      font-weight: 600;
     }
 
-    .project-title {
-      font-size: 1.55rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 14px;
-      color: var(--text-primary);
+    .project h3 {
+      font-size: 21px;
+      margin: 9px 0 10px;
+      line-height: 1.35;
     }
 
-    .project-desc {
-      font-size: 0.95rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
+    .project p {
+      color: var(--gray);
+      font-size: 14px;
     }
 
-    /* --- MEN HAQIMDA --- */
-    .about {
-      padding: 120px 0;
-      border-bottom: 1px solid var(--border-color);
+    .project-foot {
+      border-top: 1px solid var(--line);
+      margin-top: 22px;
+      padding-top: 14px;
+      color: #777;
+      font-size: 10px;
+      letter-spacing: 1px;
+      text-transform: uppercase;
     }
 
-    .about-layout {
+    /* ABOUT */
+    .about-grid {
       display: grid;
-      grid-template-columns: 1fr 1.3fr;
-      gap: 60px;
+      grid-template-columns: .9fr 1.1fr;
+      gap: 70px;
       align-items: start;
     }
 
-    .about-heading {
-      font-size: clamp(2rem, 3.5vw, 3rem);
+    .about-statement {
+      font-size: clamp(32px, 5vw, 55px);
       font-weight: 800;
       line-height: 1.15;
-      letter-spacing: -0.02em;
     }
 
-    .about-content {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      font-size: 1.05rem;
-      color: var(--text-secondary);
-      line-height: 1.75;
+    .about-statement span {
+      color: var(--gold);
     }
 
-    .about-content p strong {
-      color: var(--text-primary);
-      font-weight: 600;
+    .about-copy p {
+      color: var(--gray);
+      margin-bottom: 20px;
     }
 
-    /* --- XIZMATLAR VA KO'NIKMALAR --- */
-    .services {
-      padding: 120px 0;
-      border-bottom: 1px solid var(--border-color);
+    .about-copy strong {
+      color: var(--white);
     }
 
-    .services-grid {
+    .stats {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
+      gap: 12px;
+      margin-top: 35px;
     }
 
-    .service-card {
-      background: var(--bg-card);
-      border: 1px solid var(--border-color);
-      padding: 40px 32px;
-      transition: border-color var(--transition-smooth);
+    .stat {
+      border-top: 1px solid var(--gold);
+      padding-top: 14px;
     }
 
-    .service-card:hover {
-      border-color: var(--border-light);
+    .stat strong {
+      display: block;
+      font-size: 22px;
+    }
+
+    .stat span {
+      color: var(--gray);
+      font-size: 11px;
+    }
+
+    /* SERVICES */
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    .service {
+      background: var(--card);
+      border: 1px solid var(--line);
+      padding: 30px 24px;
+      transition: border-color .3s, transform .3s;
+    }
+
+    .service:hover {
+      border-color: var(--gold);
+      transform: translateY(-4px);
     }
 
     .service-number {
-      font-size: 0.85rem;
-      font-family: monospace;
-      color: var(--text-secondary);
-      margin-bottom: 24px;
-      display: block;
-      letter-spacing: 0.1em;
+      color: var(--gold);
+      font-size: 12px;
+      letter-spacing: 2px;
     }
 
-    .service-title {
-      font-size: 1.4rem;
-      font-weight: 700;
-      letter-spacing: -0.02em;
-      margin-bottom: 16px;
+    .service h3 {
+      font-size: 20px;
+      margin: 24px 0 12px;
     }
 
-    .service-desc {
-      font-size: 0.92rem;
-      color: var(--text-secondary);
-      line-height: 1.6;
-      margin-bottom: 24px;
+    .service p {
+      color: var(--gray);
+      font-size: 14px;
     }
 
-    .skills-list {
+    .service ul {
       list-style: none;
-      display: flex;
-      flex-direction: column;
-      gap: 8px;
-      border-top: 1px solid var(--border-color);
-      padding-top: 20px;
+      margin-top: 22px;
+      border-top: 1px solid var(--line);
+      padding-top: 17px;
     }
 
-    .skills-list li {
-      font-size: 0.85rem;
-      color: #b5b5b5;
-      display: flex;
-      align-items: center;
-      gap: 10px;
+    .service li {
+      color: #bbb;
+      font-size: 12px;
+      margin: 8px 0;
     }
 
-    .skills-list li::before {
-      content: "";
-      width: 4px;
-      height: 4px;
-      background-color: var(--text-secondary);
-      display: inline-block;
+    .service li::before {
+      content: "— ";
+      color: var(--gold);
     }
 
-    /* --- ALOQA BO'LIMI --- */
-    .contact {
-      padding: 120px 0 140px;
-      border-bottom: 1px solid var(--border-color);
-    }
-
-    .contact-wrapper {
-      max-width: 900px;
-      margin: 0 auto;
+    /* CONTACT */
+    .contact-section {
       text-align: center;
     }
 
-    .contact-title {
-      font-size: clamp(2.4rem, 5vw, 4.2rem);
-      font-weight: 800;
-      letter-spacing: -0.03em;
-      line-height: 1.1;
-      margin-bottom: 24px;
+    .contact-box {
+      max-width: 780px;
+      margin: 0 auto;
     }
 
-    .contact-text {
-      font-size: 1.1rem;
-      color: var(--text-secondary);
-      max-width: 600px;
-      margin: 0 auto 48px;
+    .contact-box .section-description {
+      margin: 18px auto 30px;
     }
 
-    .contact-links {
-      display: flex;
+    .contact-box .actions {
       justify-content: center;
-      gap: 20px;
-      flex-wrap: wrap;
     }
 
-    .social-btn {
-      display: inline-flex;
-      align-items: center;
-      gap: 12px;
-      padding: 18px 36px;
-      font-size: 0.95rem;
-      font-weight: 600;
-      letter-spacing: 0.08em;
-      text-transform: uppercase;
-      border: 1px solid var(--border-light);
-      background: var(--bg-card);
-      color: var(--text-primary);
-      transition: all var(--transition-smooth);
+    .contact-email {
+      color: var(--gold);
+      display: inline-block;
+      margin-top: 25px;
+      overflow-wrap: anywhere;
     }
 
-    .social-btn svg {
-      width: 18px;
-      height: 18px;
-      fill: currentColor;
+    /* FOOTER */
+    footer {
+      padding: 30px 0;
     }
 
-    .social-btn:hover {
-      background-color: var(--text-primary);
-      color: var(--bg-primary);
-      border-color: var(--text-primary);
-      transform: translateY(-2px);
-    }
-
-    /* --- FOOTER --- */
-    .footer {
-      padding: 48px 0;
-      background-color: var(--bg-primary);
-    }
-
-    .footer-container {
+    .footer-inner {
       display: flex;
-      justify-content: space-between;
       align-items: center;
-      flex-wrap: wrap;
+      justify-content: space-between;
       gap: 20px;
-    }
-
-    .footer-copy {
-      font-size: 0.85rem;
-      color: var(--text-secondary);
-      letter-spacing: 0.02em;
+      flex-wrap: wrap;
     }
 
     .footer-brand {
-      font-size: 0.9rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+      font-weight: 900;
+      letter-spacing: 2px;
     }
 
-    /* --- ANIMATSIYALAR & ACCESSIBILITY --- */
-    .fade-in-section {
+    .footer-brand span {
+      color: var(--gold);
+    }
+
+    .copyright {
+      color: #777;
+      font-size: 12px;
+    }
+
+    .back-top {
+      color: var(--gray);
+      font-size: 12px;
+    }
+
+    .back-top:hover {
+      color: var(--gold);
+    }
+
+    /* ANIMATSIYA: JAVASCRIPT BO'LMASA HAM MATN KO'RINADI */
+    .js .reveal {
       opacity: 0;
-      transform: translateY(24px);
-      transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
-      will-change: opacity, transform;
+      transform: translateY(22px);
+      transition: opacity .7s ease, transform .7s ease;
     }
 
-    .fade-in-section.is-visible {
+    .js .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    /* Harakatlarni cheklash (prefers-reduced-motion) */
     @media (prefers-reduced-motion: reduce) {
       html {
         scroll-behavior: auto;
       }
-      .fade-in-section {
-        opacity: 1 !important;
-        transform: none !important;
-        transition: none !important;
+
+      *, *::before, *::after {
+        animation-duration: .01ms !important;
+        transition-duration: .01ms !important;
       }
-      .project-card,
-      .project-media svg,
-      .social-btn,
-      .btn {
-        transition: none !important;
-        transform: none !important;
-      }
-      .project-card:hover {
-        transform: none !important;
+
+      .js .reveal {
+        opacity: 1;
+        transform: none;
       }
     }
 
-    /* --- RESPONSIVE DIZAYN --- */
-    @media (max-width: 992px) {
+    /* MOBIL */
+    @media (max-width: 760px) {
+      .container {
+        width: min(100% - 32px, var(--max));
+      }
+
+      .nav-inner {
+        min-height: 65px;
+      }
+
+      .logo {
+        font-size: 16px;
+        letter-spacing: 2px;
+      }
+
+      .nav-links {
+        gap: 13px;
+      }
+
+      .nav-links li:nth-child(2),
+      .nav-links li:nth-child(3) {
+        display: none;
+      }
+
+      .nav-links a {
+        font-size: 9px;
+        letter-spacing: .5px;
+      }
+
+      .nav-links .contact-nav {
+        padding: 7px 10px;
+      }
+
+      .hero {
+        min-height: 75svh;
+        padding: 80px 0 65px;
+      }
+
+      .hero h1 {
+        font-size: clamp(39px, 10vw, 64px);
+        letter-spacing: -2px;
+      }
+
+      .hero-note {
+        margin-top: 40px;
+      }
+
+      .section {
+        padding: 75px 0;
+      }
+
+      .portfolio-grid,
+      .about-grid,
       .services-grid {
         grid-template-columns: 1fr;
       }
-      .about-layout {
-        grid-template-columns: 1fr;
-        gap: 32px;
-      }
-      .portfolio-grid {
-        grid-template-columns: 1fr;
-      }
-    }
 
-    @media (max-width: 768px) {
-      .navbar {
-        height: 68px;
+      .about-grid {
+        gap: 30px;
       }
-      .nav-links {
-        display: none; /* Mobil menyu minimal qolishi uchun qisqartirildi */
+
+      .project-content {
+        padding: 21px;
       }
-      .hero {
-        padding: 90px 0 60px;
+
+      .stats {
+        gap: 8px;
       }
-      .section-header {
-        margin-bottom: 40px;
+
+      .stat strong {
+        font-size: 19px;
       }
-      .portfolio, .about, .services, .contact {
-        padding: 80px 0;
+
+      .stat span {
+        font-size: 10px;
       }
-      .footer-container {
+
+      .service {
+        padding: 26px 22px;
+      }
+
+      .footer-inner {
         flex-direction: column;
         align-items: flex-start;
       }
     }
   </style>
 </head>
-<body>
 
-  <!-- Ekran o'quvchilar uchun to'g'ridan-to'g'ri kontentga o'tish havolasi -->
-  <a href="#hero" class="skip-link">Asosiy kontentga o‘tish</a>
+<body id="top">
+  <header class="navbar">
+    <div class="container nav-inner">
+      <a href="#top" class="logo">KRUZO <span>VISION.</span></a>
 
-  <!-- NAVIGATSIYA -->
-  <header class="navbar" role="banner">
-    <div class="container nav-container">
-      <a href="#hero" class="logo" aria-label="KRUZO VISION bosh sahifa">
-        KRUZO VISION <span class="logo-dot" aria-hidden="true"></span>
-      </a>
-      <nav role="navigation" aria-label="Asosiy menyu">
+      <nav aria-label="Asosiy menyu">
         <ul class="nav-links">
-          <li><a href="#portfolio" class="nav-link">Loyihalar</a></li>
-          <li><a href="#about" class="nav-link">Haqimda</a></li>
-          <li><a href="#services" class="nav-link">Xizmatlar</a></li>
-          <li><a href="#contact" class="nav-btn">Aloqa</a></li>
+          <li><a href="#portfolio">Loyihalar</a></li>
+          <li><a href="#about">Haqimda</a></li>
+          <li><a href="#services">Xizmatlar</a></li>
+          <li><a href="#contact" class="contact-nav">Aloqa ↗</a></li>
         </ul>
       </nav>
     </div>
   </header>
 
-  <main id="main-content">
-    <!-- HERO BO'LIMI -->
-    <section id="hero" class="hero" aria-labelledby="hero-heading">
+  <main>
+    <section class="hero">
       <div class="container">
-        <div class="hero-content fade-in-section">
-          <span class="hero-subtitle">Visual Production & Art Direction</span>
-          <h1 id="hero-heading" class="hero-title">
-            <span class="active">I CREATE.</span>
-            <span>I CAPTURE.</span>
-            <span class="active">I COMMUNICATE.</span>
+        <div class="reveal">
+          <span class="eyebrow">Creative Studio / Uzbekistan</span>
+
+          <h1>
+            IDEAS INTO
+            <span>VISUALS.</span>
+            STORIES INTO
+            <span>IMPACT.</span>
           </h1>
-          <p class="hero-description">
-            Bizneslar, brendlar va shaxslar uchun premium darajadagi video ishlab chiqarish, 
-            mobilografiya hamda ta’sirchan vizual hikoyalar yaratishga ixtisoslashgan ijodiy portfolio.
+
+          <p class="hero-text">
+            Men brendlar va bizneslar uchun video, kreativ kontent
+            hamda zamonaviy vizual yechimlar yarataman. Har bir kadr —
+            o‘ziga xos hikoya.
           </p>
-          <div class="hero-actions">
-            <a href="#portfolio" class="btn btn-solid">Loyihalarni ko‘rish</a>
-            <a href="#contact" class="btn btn-outline">Hamkorlik qilish</a>
+
+          <div class="actions">
+            <a class="btn btn-primary" href="#portfolio">Ishlarimni ko‘rish ↗</a>
+            <a class="btn btn-outline" href="#contact">Hamkorlik qilish</a>
+          </div>
+
+          <p class="hero-note">Videography · Mobilography · Creative Direction</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="portfolio">
+      <div class="container">
+        <div class="section-head reveal">
+          <span class="section-label">01 / Portfolio</span>
+          <h2 class="section-title">Tanlangan loyihalar.</h2>
+          <p class="section-description">
+            Kreativ yondashuv, puxta kompozitsiya va maqsadli vizual
+            kommunikatsiya asosidagi ishlar.
+          </p>
+        </div>
+
+        <div class="portfolio-grid">
+          <article class="project reveal">
+            <div class="project-art">
+              <div class="art-text">
+                CINEMA
+                <small>VIDEO PRODUCTION</small>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">01 — Video Production</span>
+              <h3>Kino uslubidagi brend hikoyasi</h3>
+              <p>
+                Brendning xarakteri va qadriyatlarini ochib beradigan
+                kadrlar, yorug‘lik va ranglar uyg‘unligi.
+              </p>
+              <div class="project-foot">Concept · Filming · Editing</div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-art">
+              <div class="art-text">
+                VERTICAL
+                <small>REELS / SHORTS</small>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">02 — Mobilografiya</span>
+              <h3>Dinamik vertikal kontent</h3>
+              <p>
+                Instagram Reels va boshqa qisqa video platformalari
+                uchun kreativ, tezkor va esda qolarli videolar.
+              </p>
+              <div class="project-foot">Shooting · Motion · Editing</div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-art">
+              <div class="art-text">
+                IDENTITY
+                <small>BRANDING / DESIGN</small>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">03 — Vizual dizayn</span>
+              <h3>Minimalist brend identifikatsiyasi</h3>
+              <p>
+                Brendning vizual tilini shakllantiruvchi dizayn,
+                tipografika va raqamli kreativ materiallar.
+              </p>
+              <div class="project-foot">Design · Identity · Visuals</div>
+            </div>
+          </article>
+
+          <article class="project reveal">
+            <div class="project-art">
+              <div class="art-text">
+                CAMPAIGN
+                <small>CREATIVE MARKETING</small>
+              </div>
+            </div>
+            <div class="project-content">
+              <span class="project-category">04 — Kreativ marketing</span>
+              <h3>Reklama va kontent kampaniyasi</h3>
+              <p>
+                Auditoriya e’tiborini tortishga va brend xabarini
+                aniq yetkazishga qaratilgan kreativ yechimlar.
+              </p>
+              <div class="project-foot">Concept · Content · Campaign</div>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="about">
+      <div class="container about-grid">
+        <div class="reveal">
+          <span class="section-label">02 / Men haqimda</span>
+          <h2 class="about-statement">
+            Oddiy kadr emas.
+            <span>Ta’sirli hikoya.</span>
+          </h2>
+        </div>
+
+        <div class="about-copy reveal">
+          <p>
+            Men <strong>KRUZO VISION</strong> asosida vizual kontent,
+            videografiya va kreativ dizayn bilan shug‘ullanaman.
+            Maqsadim — har bir loyiha uchun o‘ziga xos uslub va
+            tushunarli vizual hikoya yaratish.
+          </p>
+          <p>
+            G‘oyani ishlab chiqishdan tortib suratga olish,
+            montaj va yakuniy taqdimotgacha bo‘lgan jarayonda
+            detallarga e’tibor beraman.
+          </p>
+          <p>
+            Har bir hamkorlikda sifat, izchillik va brendning
+            maqsadiga mos ijodiy yondashuvni ustuvor deb bilaman.
+          </p>
+
+          <div class="stats">
+            <div class="stat">
+              <strong>VIDEO</strong>
+              <span>Vizual hikoyalar</span>
+            </div>
+            <div class="stat">
+              <strong>DESIGN</strong>
+              <span>Brend estetikasi</span>
+            </div>
+            <div class="stat">
+              <strong>IDEAS</strong>
+              <span>Kreativ yechimlar</span>
+            </div>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PORTFOLIO GALEREYASI -->
-    <section id="portfolio" class="portfolio" aria-labelledby="portfolio-heading">
+    <section class="section" id="services">
       <div class="container">
-        <div class="section-header fade-in-section">
-          <span class="section-tag">Tanlangan ishlar</span>
-          <h2 id="portfolio-heading" class="section-title">Portfolio Galereyasi</h2>
+        <div class="section-head reveal">
+          <span class="section-label">03 / Xizmatlar</span>
+          <h2 class="section-title">G‘oyadan natijagacha.</h2>
+          <p class="section-description">
+            Loyiha ehtiyojiga mos vizual xizmatlar va kreativ ishlab chiqarish.
+          </p>
         </div>
 
-        <div class="portfolio-grid">
-          <!-- 1-Loyiha: Video Production -->
-          <article class="project-card fade-in-section">
-            <div class="project-media" aria-hidden="true">
-              <!-- SVG Placeholder: Haqiqiy rasm bilan almashtirish uchun <img src="..." alt="..."> qiling -->
-              <svg viewBox="0 0 800 500" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100%" height="100%" fill="#141414"/>
-                <circle cx="400" cy="250" r="140" fill="none" stroke="#262626" stroke-width="1.5"/>
-                <polygon points="385,220 430,250 385,280" fill="#444"/>
-                <text x="50%" y="75%" text-anchor="middle" fill="#555" font-size="14" font-family="monospace" letter-spacing="3">VIDEO PRODUCTION</text>
-              </svg>
-            </div>
-            <div class="project-body">
-              <span class="project-category">Video Production</span>
-              <h3 class="project-title">Kino formatidagi brend hikoyasi</h3>
-              <p class="project-desc">
-                Kompaniya falsafasi va qadriyatlarini ochib beruvchi to‘liq sikldagi tijoriy imij videoroligi. Yoritish, rang berish va saund-dizayn to‘liq studiya formatida amalga oshirilgan.
-              </p>
-            </div>
+        <div class="services-grid">
+          <article class="service reveal">
+            <span class="service-number">SERVICE / 01</span>
+            <h3>Videografiya</h3>
+            <p>Brend va biznes uchun sifatli, maqsadli video kontent.</p>
+            <ul>
+              <li>Reklama roliklari</li>
+              <li>Intervyu va reportaj</li>
+              <li>Kino uslubidagi videolar</li>
+              <li>Montaj va rang korreksiyasi</li>
+            </ul>
           </article>
 
-          <!-- 2-Loyiha: Mobilografiya -->
-          <article class="project-card fade-in-section">
-            <div class="project-media" aria-hidden="true">
-              <svg viewBox="0 0 800 500" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100%" height="100%" fill="#161616"/>
-                <rect x="320" y="80" width="160" height="340" rx="24" fill="none" stroke="#2c2c2c" stroke-width="2"/>
-                <line x1="360" y1="110" x2="440" y2="110" stroke="#333" stroke-width="2"/>
-                <text x="50%" y="88%" text-anchor="middle" fill="#555" font-size="14" font-family="monospace" letter-spacing="3">MOBILOGRAPHY / REELS</text>
-              </svg>
-            </div>
-            <div class="project-body">
-              <span class="project-category">Mobilografiya & SMM</span>
-              <h3 class="project-title">Dinamik vertikal reklama seriyasi</h3>
-              <p class="project-desc">
-                Instagram Reels va TikTok platformalari uchun qisqa, trendga mos va tezkor dinamikaga ega vertikal formatdagi promo roliklar to‘plami.
-              </p>
-            </div>
+          <article class="service reveal">
+            <span class="service-number">SERVICE / 02</span>
+            <h3>Mobilografiya</h3>
+            <p>Mobil qurilmada professional ko‘rinishga ega kontent.</p>
+            <ul>
+              <li>Instagram Reels</li>
+              <li>Mahsulot videolari</li>
+              <li>Jarayon va backstage</li>
+              <li>Vertikal video montaj</li>
+            </ul>
           </article>
 
-          <!-- 3-Loyiha: Dizayn -->
-          <article class="project-card fade-in-section">
-            <div class="project-media" aria-hidden="true">
-              <svg viewBox="0 0 800 500" width="100%" height="100%" preserveAspectRatio="xMidYMid slice" xmlns="http://www.w3.org/2000/svg">
-                <rect width="100%" height="100%" fill="#131313"/>
-                <line x1="150" y1="100" x2="650" y2="400" stroke="#262626" stroke-width="1.5"/>
-                <line x1="150" y1="400" x2="650" y2="100" stroke="#262626" stroke-width="1.5"/>
-                <rect x="300" y="175" width="200" height="150" fill="none" stroke="#3a3a3a" stroke-width="1"/>
-                <text x="50%" y="82%" text-anchor="middle" fill="#555" font-size="14" font-family="monospace" letter-spacing="3">BRANDING & DESIGN</text>
-              </svg>
-            </div>
-            <div class="project-body">
-              <span class="project-category">Vizual Dizayn</span>
-              <h3 class="project-title">Minimalist vizual identifikatsiya</h3>
-              <p class="project-desc">
-                Raqamli platformal
+          <article class="service reveal">
+            <span class="service-number">SERVICE / 03</span>
+            <h3>Kreativ dizayn</h3>
+            <p>Brendning vizual ko‘rinishini mustahkamlovchi dizayn.</p>
+            <ul>
+              <li>Social media dizayni</li>
+              <li>Reklama kreativlari</li>
+              <li>Vizual konsepsiya</li>
+              <li>Kontent uchun muqovalar</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section contact-section" id="contact">
+      <div class="container contact-box reveal">
+        <span class="section-label">04 / Aloqa</span>
+        <h2 class="section-title">Keling, birga yaratamiz.</h2>
+        <p class="section-description">
+          Yangi loyiha, kreativ hamkorlik yoki xizmatlar bo‘yicha
+          bog‘laning. G‘oyangizni muhokama qilishga tayyorman.
+        </p>
+
+         <div class="actions">
+          <!-- Quyidagi Telegram havolasini o'z username'ingizga almashtiring -->
+          <a class="btn btn-primary"
+             href="https://t.me/kruzovision"
+             target="_blank" rel="noopener noreferrer">
+            Telegram orqali yozish ↗
+          </a>
+
+          <a class="btn btn-outline"
+             href="https://www.instagram.com/kruzovision/"
+             target="_blank" rel="noopener noreferrer">
+            Instagram ↗
+          </a>
+        </div>
+
+        <a class="contact-email" href="mailto:">
+          Hamkorlik uchun bog‘laning
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <a href="#top" class="footer-brand">KRUZO <span>VISION.</span></a>
+      <p class="copyright">
+        © <span id="year">2026</span> KRUZO VISION. Barcha huquqlar himoyalangan.
+      </p>
+      <a class="back-top" href="#top">Yuqoriga ↑</a>
+    </div>
+  </footer>
+
+  <script>
+    // Animatsiya: JavaScript ishlamasa ham kontent ko'rinib turadi.
+    document.documentElement.classList.add("js");
+
+    const revealElements = document.querySelectorAll(".reveal");
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.08 });
+
+      revealElements.forEach((element) => observer.observe(element));
+    } else {
+      revealElements.forEach((element) => element.classList.add("visible"));
+    }
+
+    document.getElementById("year").textContent =
+      new Date().getFullYear();
+  </script>
+</body>
+</html>
